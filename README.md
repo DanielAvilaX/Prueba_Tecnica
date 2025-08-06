@@ -1,4 +1,4 @@
-<h1>🧩 Palíndromo con sentido semántico</h1>
+<h1>Palíndromo con sentido semántico</h1>
 <div align="center">
   <p align="left">
     <img src="https://img.shields.io/badge/STATUS-FINALIZADO-blue">
@@ -10,7 +10,7 @@
   En caso afirmativo, genera una versión coherente del palíndromo. Si no es posible, retorna <code>"Not Possible"</code>.
 </p>
 
-<h2>⚙️ Tecnologías usadas</h2>
+<h2>Tecnologías usadas</h2>
 <ul>
   <li>Java 17</li>
   <li>NetBeans IDE 22</li>
@@ -23,7 +23,7 @@ palindromo/
 │   └── Palindromo.java
 </pre>
 
-<h2>💡 Lógica del algoritmo</h2>
+<h2>Lógica del algoritmo</h2>
 <ul>
   <li>Convierte la entrada a minúsculas.</li>
   <li>Cuenta la frecuencia de cada carácter usando <code>HashMap</code>.</li>
@@ -32,18 +32,12 @@ palindromo/
   <li>Construye el palíndromo utilizando la mitad izquierda, el carácter central (si aplica) y la mitad derecha en reversa.</li>
 </ul>
 
-<h2>▶️ Ejecución del programa</h2>
-<p>Puedes correr el proyecto directamente en NetBeans 22. Solo ejecuta <code>PalindromoCoherente.java</code> y se te pedirá que ingreses una cadena por consola.</p>
+<h2>Ejecución del programa</h2>
+<p>Puedes correr el proyecto directamente en NetBeans 22. Solo ejecuta <code>Palindromo.java</code> y se te pedirá que ingreses una cadena por consola.</p>
 
 <pre>
 Input: laTinaLavaAnita
 Output: anitalavalatina
-</pre>
-
-<h2>✅ Resultado esperado</h2>
-<p>El programa muestra un palíndromo válido y ordenado. Si no es posible formar uno, imprime:</p>
-<pre>
-Not Possible
 </pre>
 
 <hr>
@@ -66,7 +60,7 @@ Not Possible
   <li>NetBeans IDE 22</li>
 </ul>
 
-<h2>🧱 Diseño general</h2>
+<h2>Diseño general</h2>
 <p>Se utilizaron <strong>interfaces</strong>, <strong>clases abstractas</strong>, <strong>polimorfismo</strong> y una fuerte <strong>separación de responsabilidades</strong> para representar cada componente del sistema:</p>
 
 <h3>🗂️ Paquetes y clases principales:</h3>
@@ -96,7 +90,7 @@ poo-crawling/
   <li><strong>App.java:</strong> Clase principal. Orquesta las fuentes, simula la búsqueda y muestra los resultados.</li>
 </ul>
 
-<h2>▶️ Cómo ejecutar</h2>
+<h2>Cómo ejecutar</h2>
 <ol>
   <li>Abre el proyecto en <strong>NetBeans 22</strong>.</li>
   <li>Corre la clase <code>App.java</code>.</li>
@@ -120,15 +114,15 @@ Mostrando resultados en el dashboard:
 [Archivo] Archivo2: Contenido archivo 2
 </pre>
 
-<h2>🎯 Objetivo del proyecto</h2>
+<h2>Objetivo del proyecto</h2>
 <ul>
   <li>Modelar conceptos de crawling e indexación usando POO.</li>
   <li>Aplicar principios como interfaces, herencia y encapsulamiento.</li>
   <li>Simular el flujo completo: origen → búsqueda → visualización.</li>
 </ul>
 
-<h2>📎 Notas</h2>
+<h2>Notas</h2>
 <blockquote>
   Este proyecto fue desarrollado con fines académicos.<br>
-  No requiere bases de datos ni frameworks externos. Todo el contenido es ficticio y simulado.
+  No requiere bases de datos ni frameworks externos. Todo el contenido es ficticio y simulado. Desarrollado por Daniel Avila, ingeniero de software.
 </blockquote>
