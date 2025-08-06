@@ -20,7 +20,7 @@
 <pre>
 palindromo/
 ├── src/
-│   └── PalindromoCoherente.java
+│   └── Palindromo.java
 </pre>
 
 <h2>💡 Lógica del algoritmo</h2>
