@@ -54,7 +54,7 @@ Output: anitalavalatina
   El objetivo es representar mediante conceptos de <strong>Programación Orientada a Objetos</strong> un sistema capaz de recolectar información desde distintas fuentes y mostrar resultados en diferentes salidas, sin conectarse a servicios reales.
 </p>
 
-<h2>⚙️ Tecnologías usadas</h2>
+<h2>Tecnologías usadas</h2>
 <ul>
   <li>Java 17</li>
   <li>NetBeans IDE 22</li>
@@ -79,7 +79,7 @@ poo-crawling/
 │   └── App.java
 </pre>
 
-<h2>🧩 Componentes</h2>
+<h2>Componentes</h2>
 <ul>
   <li><strong>Documento.java:</strong> Contiene el modelo con atributos: <code>titulo</code>, <code>contenido</code> y <code>fuenteOrigen</code>.</li>
   <li><strong>FuenteDatos (interfaz):</strong> Define el contrato para todas las fuentes que devuelven documentos simulados.</li>
@@ -97,7 +97,7 @@ poo-crawling/
   <li>Verás en consola los documentos recolectados, una búsqueda simulada y la presentación de resultados por dos salidas diferentes.</li>
 </ol>
 
-<h2>📸 Ejemplo de salida por consola</h2>
+<h2>Ejemplo de salida por consola</h2>
 <pre>
 Obteniendo documentos desde archivo...
 Obteniendo documentos desde web...
