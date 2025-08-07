@@ -6,8 +6,7 @@
 </div>
 
 <p>
-  Este repositorio contiene el código fuente de una aplicación de consola desarrollada en Java, que permite identificar si una cadena de texto puede reordenarse para formar un palíndromo válido. 
-  En caso afirmativo, genera una versión coherente del palíndromo. Si no es posible, retorna <code>"Not Possible"</code>.
+ Este repositorio contiene el código fuente de una aplicación de consola desarrollada en Java, que permite identificar si una cadena de texto puede reordenarse para formar un palíndromo válido. En caso afirmativo, genera una versión coherente del palíndromo. Si no es posible, retorna<code>"Not Possible"</code>.
 </p>
 
 <h2>Tecnologías usadas</h2>
@@ -24,21 +23,26 @@ palindromo/
 </pre>
 
 <h2>Lógica del algoritmo</h2>
-<ul>
-  <li>Convierte la entrada a minúsculas.</li>
-  <li>Cuenta la frecuencia de cada carácter usando <code>HashMap</code>.</li>
-  <li>Verifica si puede existir un palíndromo con esas frecuencias.</li>
-  <li>Ordena los caracteres por su frecuencia para generar un resultado más legible.</li>
-  <li>Construye el palíndromo utilizando la mitad izquierda, el carácter central (si aplica) y la mitad derecha en reversa.</li>
-</ul>
+  <ol>
+    <li>Convierte la entrada a minúsculas para evitar errores con mayúsculas.</li>
+    <li>Recorre la cadena para contar la frecuencia de cada carácter usando un <code>HashMap</code>.</li>
+    <li>Valida si es posible formar un palíndromo:
+      <ul>
+        <li>Si la longitud es par, <strong>todas</strong> las frecuencias deben ser pares.</li>
+        <li>Si es impar, <strong>solo una</strong> puede ser impar.</li>
+      </ul>
+    </li>
+    <li>Si cumple, construye el palíndromo:
+      <ul>
+        <li>Forma la mitad izquierda con la mitad de cada carácter.</li>
+        <li>Agrega el carácter central (si hay uno).</li>
+        <li>Añade la reversa de la mitad izquierda al final para completar el palíndromo.</li>
+      </ul>
+    </li>
+  </ol>
 
 <h2>Ejecución del programa</h2>
 <p>Puedes correr el proyecto directamente en NetBeans 22. Solo ejecuta <code>Palindromo.java</code> y se te pedirá que ingreses una cadena por consola.</p>
-
-<pre>
-Input: laTinaLavaAnita
-Output: anitalavalatina
-</pre>
 
 <hr>
 
