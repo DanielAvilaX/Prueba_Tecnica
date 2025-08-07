@@ -63,6 +63,11 @@ Output: anitalavalatina
 <h2>Diseño general</h2>
 <p>Se utilizaron <strong>interfaces</strong>, <strong>clases abstractas</strong>, <strong>polimorfismo</strong> y una fuerte <strong>separación de responsabilidades</strong> para representar cada componente del sistema:</p>
 
+## Diagrama de Clases
+
+![Diagrama de Clases](Recursos/Diagrama_De_Clases_POO.png)
+
+
 <h3>🗂️ Paquetes y clases principales:</h3>
 <pre>
 poo-crawling/
