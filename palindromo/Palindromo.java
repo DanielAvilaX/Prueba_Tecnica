@@ -1,74 +1,84 @@
-
 package palindromo;
-/*
-* Solución al problema del palíndromo.
-*
-* Estructuras de datos utilizadas y por qué:
-* Para este ejercicio decidí usar Java, ya que, es el lenguaje que mejor manejo, además, por el tipo de puesto, considero importante demostrar claridad en estructuras como mapas, listas y builders.
-* El HashMap me permite contar fácilmente cuántas veces aparece cada carácter, lo cual es clave para saber si se puede formar un palíndromo o no. También uso una lista de entradas para poder ordenar los caracteres según su frecuencia, lo que ayuda a que el resultado final sea más coherente.
-*
-* Pasos de la solución (escritura procedimental):
-* 1. Recibo la cadena del usuario desde consola.
-* 2. Paso todo a minúsculas para evitar problemas con mayúsculas.
-* 3. Recorro la cadena y uso un HashMap para contar cuántas veces aparece cada letra.
-* 4. Reviso cuántos caracteres tienen una frecuencia impar. Si hay más de uno, ya sé que no se puede formar un palíndromo, así que devuelvo "Not Possible".
-* 5. Si sí se puede, creo una lista a partir del mapa y la ordeno por frecuencia (de mayor a menor) para que el palíndromo tenga un orden más lógico y fácil de leer.
-* 6. Con esa lista, empiezo a construir la mitad del palíndromo agregando la mitad de las veces que aparece cada carácter.
-* 7. Si había un carácter impar, lo pongo en el centro del resultado.
-* 8. Finalmente, le agrego la parte invertida de la primera mitad y listo: tengo un palíndromo válido (si era posible).
-*/
+
+/**
+ * Este programa recibe una cadena de caracteres y determina si se puede reorganizar
+ * para formar un palíndromo. Si es posible, construye uno válido y lo muestra.
+ * En caso contrario, imprime "Not Possible".
+ *
+ * Decidí hacerlo en Java porque es el lenguaje que mejor manejo y porque el ejercicio
+ * requiere una lógica clara usando estructuras como mapas, iteraciones y builders.
+ *
+ * En cuanto a las estructuras de datos:
+ * - Utilicé un HashMap para contar cuántas veces aparece cada carácter, ya que es muy eficiente para eso.
+ * - También usé StringBuilder porque permite construir cadenas de forma más óptima que concatenar con +.
+ *
+ * Lógica del programa paso a paso:
+ * 1. Paso toda la cadena a minúsculas para evitar que 'A' y 'a' se traten como distintos.
+ * 2. Recorro la cadena para contar la frecuencia de cada carácter.
+ * 3. A medida que cuento, voy llevando el control de cuántos caracteres tienen una frecuencia impar.
+ *    Esto es importante porque:
+ *      - Si la longitud de la cadena es par, **ningún carácter debe tener frecuencia impar**.
+ *      - Si la longitud es impar, **solo uno puede tener frecuencia impar**.
+ *    Si no se cumple, directamente devuelvo "Not Possible".
+ * 4. Si sí es posible construir el palíndromo, empiezo a formar la primera mitad usando la mitad de la cantidad
+ *    de cada carácter.
+ * 5. Si había un carácter con frecuencia impar, lo coloco en el centro.
+ * 6. Luego simplemente agrego la reversa de la primera mitad, y listo: tengo el palíndromo.
+ */
+
 
 import java.util.*;
 
-public class Palindromo{
+public class Palindromo {
 
     public static String construirPalindromo(String input) {
-        input = input.toLowerCase(); // Paso todo a minúscula
+        input = input.toLowerCase();
+        int n = input.length();
 
-        // Contar cuántas veces aparece cada letra
+        // Contamos la frecuencia de cada carácter
         Map<Character, Integer> frecuencia = new HashMap<>();
-        for (char c : input.toCharArray()) {
-            frecuencia.put(c, frecuencia.getOrDefault(c, 0) + 1);
-        }
-
         int impares = 0;
-        Character central = null;
 
-        // Revisar cuántos caracteres tienen una cantidad impar
-        for (Map.Entry<Character, Integer> entry : frecuencia.entrySet()) {
-            if (entry.getValue() % 2 != 0) {
+        for (char c : input.toCharArray()) {
+            int count = frecuencia.getOrDefault(c, 0) + 1;
+            frecuencia.put(c, count);
+
+            // Si el nuevo conteo es impar, sumamos 1, si es par, restamos 1
+            if (count % 2 == 0) {
+                impares--;
+            } else {
                 impares++;
-                central = entry.getKey(); // Guardo el carácter impar (si hay)
             }
         }
 
-        // Si hay más de un carácter con frecuencia impar, no se puede
-        if (impares > 1) {
+        // Verificamos posibilidad del palíndromo antes de continuar
+        if ((n % 2 == 0 && impares != 0) || (n % 2 != 0 && impares != 1)) {
             return "Not Possible";
         }
 
-        // Ordenar por frecuencia para que el resultado sea más balanceado
-        List<Map.Entry<Character, Integer>> listaOrdenada = new ArrayList<>(frecuencia.entrySet());
-        listaOrdenada.sort((a, b) -> b.getValue().compareTo(a.getValue()));
-
         StringBuilder mitad = new StringBuilder();
+        String central = "";
 
-        // Construir la mitad del palíndromo
-        for (Map.Entry<Character, Integer> entry : listaOrdenada) {
+        for (Map.Entry<Character, Integer> entry : frecuencia.entrySet()) {
             char c = entry.getKey();
-            int count = entry.getValue() / 2;
-            for (int i = 0; i < count; i++) {
+            int count = entry.getValue();
+
+            // Si la cantidad es impar, ese carácter va al centro (solo uno)
+            if (count % 2 != 0) {
+                central = String.valueOf(c);
+            }
+
+            // Añadir la mitad de las veces a la primera mitad
+            for (int i = 0; i < count / 2; i++) {
                 mitad.append(c);
             }
         }
 
-        // Armar el palíndromo completo: mitad + centro (si hay) + mitad invertida
+        // Armamos el palíndromo: mitad + centro (si hay) + mitad invertida
         StringBuilder resultado = new StringBuilder();
         resultado.append(mitad);
-        if (central != null) {
-            resultado.append(central);
-        }
-        resultado.append(new StringBuilder(mitad).reverse());
+        resultado.append(central);
+        resultado.append(mitad.reverse());
 
         return resultado.toString();
     }
@@ -80,11 +90,3 @@ public class Palindromo{
         System.out.println(construirPalindromo(entrada));
     }
 }
-
-/*
-* Evaluación de la solución:
-* Esta solución funciona bien incluso con cadenas largas (hasta 1000 caracteres, como dice el enunciado).
-* Primero recorro la cadena una sola vez para contar las letras, así que no es nada pesado.
-* Después, hago un pequeño ordenamiento de las letras según cuántas veces se repiten, pero como normalmente no hay muchas letras distintas, eso también es rápido.
-* En resumen, el programa es bastante eficiente y no debería tener problemas de rendimiento con los datos que se piden.
-*/
